@@ -92,6 +92,30 @@ Cada ejecución queda registrada en los logs de GitHub Actions y en la hoja `ale
 
 ---
 
+## 🗂️ Estructura del Repositorio
+
+```bash
+
+📁 Proyecto-Predicci-n-hospitalaria/
+├── data/                                                              # Datos limpios y listos para análisis
+│     ├── hospital_data.csv                                            # Dataset Data Engineer 
+│     └── predicciones.csv                                             # Dataset ML Forecasting 
+│ 
+├── Agentes_Automatizacion/
+│   ├── Agente1_data.py                                                # Agente que sincroniza datos desde Google Drive a Google Sheets
+│   └── Agente2_alertas.py                                             # Agente que analiza la ocupación y envía alertas
+│
+├── .github/                                          
+│   └──workflows/                                                       # Visualizaciones y gráficos de Machine Learning Engineer
+│       ├── Agente 1.yaml                                               # Workflow para ejecutar el Agente 1: integración de datos desde Google Drive a Google Sheets
+│       └── Agente 2.yaml                                               # Workflow para el Agente 2: procesamiento de datos hospitalarios y envío de alertas de predicción
+│
+├── imagen/                                                             # Visualizaciones y gráficos de los Agentes
+│
+├── README.md                                                           # Descripción general del proyecto
+└── requirements.txt                                                    # Librerías necesarias para ejecutar el proyecto
+```
+
 ## Author
 **Bárbara Ángeles Ortiz**
 
