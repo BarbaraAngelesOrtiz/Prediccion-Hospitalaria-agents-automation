@@ -106,7 +106,7 @@ Cada ejecución queda registrada en los logs de GitHub Actions y en la hoja `ale
 │   └── Agente2_alertas.py                                             # Agente que analiza la ocupación y envía alertas
 │
 ├── .github/                                          
-│   └──workflows/                                                       # Visualizaciones y gráficos de Machine Learning Engineer
+│   └──workflows/                                                       
 │       ├── Agente 1.yaml                                               # Workflow para ejecutar el Agente 1: integración de datos desde Google Drive a Google Sheets
 │       └── Agente 2.yaml                                               # Workflow para el Agente 2: procesamiento de datos hospitalarios y envío de alertas de predicción
 │
