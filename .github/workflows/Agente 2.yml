@@ -1,0 +1,23 @@
+name: Agent 2 - Alertas Ocupación
+
+on:
+  schedule:
+    - cron: "0 18 * * *"  # todos los días a las 18 UTC
+  workflow_dispatch:
+
+jobs:
+  run-agent2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install pandas gspread google-auth requests
+      - name: Ejecutar Agente 2
+        env:
+          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python Agentes_Automatizacion/Agente2_alertas.py

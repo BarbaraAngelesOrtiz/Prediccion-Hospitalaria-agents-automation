@@ -1,0 +1,28 @@
+name: Agente 1 - Uploader Hospital Data
+
+on:
+  workflow_dispatch:  # ejecución manual
+  schedule:
+    - cron: "0 18 * * *"  # todos los días a las 6 PM UTC
+
+jobs:
+  upload-hospital-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📚 Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🚀 Ejecutar Agente 1 
+        env:
+          GOOGLE_SHEETS_CREDENTIALS: ${{ secrets.GOOGLE_SHEETS_CREDENTIALS }}
+          DRIVE_FOLDER_ID: ${{ secrets.DRIVE_FOLDER_ID }}
+        run: python Agentes_Automatizacion/Agente1_data.py
