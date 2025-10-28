@@ -18,7 +18,7 @@ El **Agente 1** se conecta a una carpeta de **Google Drive** donde se alojan los
 Automáticamente:
 - Descarga los CSV desde Drive.  
 - Los convierte en **DataFrames de Pandas**.  
-- Los sube al **Google Spreadsheet** `Predicciones Hospitalarias`, actualizando las hojas:
+- Los sube al **Google Spreadsheet** `Predicciones Hospitalarias`, actualizando las [hojas](https://docs.google.com/spreadsheets/d/1LjwDLl9KPb1Zid3uYbDMo99rCDElX2WxmY82phOFY3w/edit?gid=294779051#gid=294779051):
   - `hospital_data`
   - `predicciones`
 
