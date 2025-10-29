@@ -15,7 +15,7 @@ The CSV files of historical data and forecasting predictions are a product of th
 
 - `hospital_data.csv` → actual hospital occupancy data.
 
-- `predictions.csv` → projected values ​​from the predictive model.
+- `predicciones.csv` → projected values ​​from the predictive model.
 
 Automatically:
 
@@ -24,7 +24,7 @@ Automatically:
 - Uploads them to the **Google Spreadsheet** `Predicciones Hospitalarias`, updating the [sheets](https://docs.google.com/spreadsheets/d/1LjwDLl9KPb1Zid3uYbDMo99rCDElX2WxmY82phOFY3w/edit?gid=294779051#gid=294779051):
   - `hospital_data`
   - `predicciones`
-  - `predicciones`
+  - `Alertas_log`
 
 This maintains a **centralized and up-to-date repository** of historical and predictive information.
 
@@ -64,9 +64,9 @@ The agent also:
 
 🏥 Hospital: Central
 
-📅 Date: 2025-10-28 
+📅 Fecha (Date): 2025-10-28 
 
-💢 Total Occupancy: 88.3%
+💢  Ocupación total (Total Occupancy): 88.3%
 
 <img width="1256" height="862" alt="Telegram" src="https://github.com/user-attachments/assets/f775ac35-9eb8-4df3-ae4c-ae6455364e05" />
 
@@ -121,7 +121,7 @@ Each execution is logged in the GitHub Actions logs and in the `alertas_log` fil
 ```
 
 ## Author
-**Bárbara Ángeles Ortiz**
+**Bárbara de los Ángeles Ortiz**
 
 <img src="https://github.com/user-attachments/assets/30ea0d40-a7a9-4b19-a835-c474b5cc50fb" width="115">
 
