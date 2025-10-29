@@ -21,8 +21,9 @@ Automatically:
 
 - Downloads the CSV files from Drive.
 - Converts them into **Pandas DataFrames.**
-- Uploads them to the **Google Spreadsheet** `Hospital Predictions`, updating the [sheets](https://docs.google.com/spreadsheets/d/1LjwDLl9KPb1Zid3uYbDMo99rCDElX2WxmY82phOFY3w/edit?gid=294779051#gid=294779051):
+- Uploads them to the **Google Spreadsheet** `Predicciones Hospitalarias`, updating the [sheets](https://docs.google.com/spreadsheets/d/1LjwDLl9KPb1Zid3uYbDMo99rCDElX2WxmY82phOFY3w/edit?gid=294779051#gid=294779051):
   - `hospital_data`
+  - `predicciones`
   - `predicciones`
 
 This maintains a **centralized and up-to-date repository** of historical and predictive information.
