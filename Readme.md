@@ -1,28 +1,31 @@
-# 🧠 Automatización de Monitoreo Hospitalario con Agentes Inteligentes
+# 🧠 Hospital Monitoring Automation with Intelligent Agents
 
-Este proyecto implementa un **pipeline automatizado** basado en **GitHub Actions** y agentes en Python para gestionar y monitorear datos hospitalarios en tiempo real.  
-El sistema combina integración de datos, análisis de ocupación y envío de alertas automáticas por Telegram.
+This project implements an **automated pipeline** based on **GitHub Actions** and Python agents to manage and monitor hospital data in real time.
 
-Los archivos csv de datos historicos y predicción forecasting son producto del proyecto [Modelo Predictivo de Deterioro de Salud en Pacientes Hospitalizados en España](https://github.com/BarbaraAngelesOrtiz/Proyecto-Predicci-n-hospitalaria)
+The system combines data integration, occupancy analysis, and automatic alerts sent via Telegram.
+
+The CSV files of historical data and forecasting predictions are a product of this project [Predictive Model of Health Deterioration in Hospitalized Patients in Spain](https://github.com/BarbaraAngelesOrtiz/Proyecto-Predicci-n-hospitalaria)
 
 ---
 
-## ⚙️ Arquitectura del Sistema
+## ⚙️ System Architecture
 
-### 🧩 Agente 1 – Integración y Actualización de Datos
-El **Agente 1** se conecta a una carpeta de **Google Drive** donde se alojan los archivos CSV diarios:
+### 🧩 Agent 1 – Data Integration and Updates
+**Agent 1** connects to a **Google Drive** folder where the daily CSV files are stored:
 
-- `hospital_data.csv` → datos reales de ocupación hospitalaria.  
-- `predicciones.csv` → valores proyectados del modelo predictivo.
+- `hospital_data.csv` → actual hospital occupancy data.
 
-Automáticamente:
-- Descarga los CSV desde Drive.  
-- Los convierte en **DataFrames de Pandas**.  
-- Los sube al **Google Spreadsheet** `Predicciones Hospitalarias`, actualizando las [hojas](https://docs.google.com/spreadsheets/d/1LjwDLl9KPb1Zid3uYbDMo99rCDElX2WxmY82phOFY3w/edit?gid=294779051#gid=294779051):
+- `predictions.csv` → projected values ​​from the predictive model.
+
+Automatically:
+
+- Downloads the CSV files from Drive.
+- Converts them into **Pandas DataFrames.**
+- Uploads them to the **Google Spreadsheet** `Hospital Predictions`, updating the [sheets](https://docs.google.com/spreadsheets/d/1LjwDLl9KPb1Zid3uYbDMo99rCDElX2WxmY82phOFY3w/edit?gid=294779051#gid=294779051):
   - `hospital_data`
   - `predicciones`
 
-De esta forma se mantiene un **repositorio centralizado y actualizado** de información histórica y predictiva.
+This maintains a **centralized and up-to-date repository** of historical and predictive information.
 
 <img width="1468" height="942" alt="predicciones" src="https://github.com/user-attachments/assets/b2a6abee-6f5d-455b-af4c-080b13ccfa7e" />
 <img width="1275" height="943" alt="Alerts" src="https://github.com/user-attachments/assets/f0c7c299-86b7-4399-b8e9-9ded288ebe3d" />
@@ -30,90 +33,90 @@ De esta forma se mantiene un **repositorio centralizado y actualizado** de infor
 
 ---
 
-### 🤖 Agente 2 – Análisis, Detección de Riesgos y Alertas
+### 🤖 Agent 2 – Analysis, Risk Detection, and Alerts
 
-El **Agente 2** toma los datos desde el mismo Google Sheet y realiza el análisis de ocupación:
+**Agent 2** takes the data from the same Google Sheet and performs the occupancy analysis:
 
-- **Ocupación real (%)** → basada en camas ocupadas vs. camas habilitadas (planta + UCI).  
-- **Ocupación predicha (%)** → proveniente del modelo de predicción.
+- **Actual occupancy (%)** → based on occupied beds vs. available beds (ward + ICU).
+- **Predicted occupancy (%)** → derived from the prediction model.
 
-El agente además:
+The agent also:
 
-- 🧹 **Limpia los datos** y limita los valores de ocupación al 100%.  
-- 🏥 **Reconstruye el nombre del hospital** desde columnas one-hot codificadas.  
-- 📲 **Envía alertas automáticas por Telegram** cuando:
-  - La **ocupación real ≥ 85%**.  
-  - La **ocupación proyectada ≥ 95%**.  
-- 🗂️ **Registra cada evento** en la hoja `alertas_log` con:
-  - Timestamp  
-  - Tipo de alerta  
-  - Hospital  
-  - Fecha  
-  - Porcentaje de ocupación  
-  - Estado de envío
+- 🧹 **Cleans the data** and limits occupancy values ​​to 100%.
+- 🏥 **Reconstructs the hospital** name from one-hot coded columns.
+- 📲 **Sends automatic alerts via Telegram** when:
+  - **Actual occupancy ≥ 85%**
+  - **Projected occupancy ≥ 95%**
+- 🗂️ **Record each event** in the `alerts_log` sheet with:
+- Timestamp
+- Alert Type
+- Hospital
+- Date
+- Occupancy Percentage
+- Submission Status
 
 ---
 
 ### 💬 Ejemplo de Alerta
 
-🚨 ALERTA REAL - 85%
+🚨 ALERTA REAL (REAL ALERT) - 85%
 
 🏥 Hospital: Central
 
-📅 Fecha: 2025-10-28
+📅 Date: 2025-10-28 
 
-💢 Ocupación total: 88.3%
+💢 Total Occupancy: 88.3%
 
 <img width="1256" height="862" alt="Telegram" src="https://github.com/user-attachments/assets/f775ac35-9eb8-4df3-ae4c-ae6455364e05" />
 
 ---
 
-## 🧰 Stack Tecnológico
+## 🧰 Technology Stack
 
-| Tecnología | Uso principal |
+| Technology | Main use |
 |-------------|----------------|
-| **Python** | Procesamiento, análisis y automatización |
-| **Pandas** | Limpieza y manipulación de datos |
-| **Google Drive API** | Descarga de archivos CSV |
-| **Google Sheets API (GSpread)** | Actualización y lectura de hojas de cálculo |
-| **Telegram Bot API** | Envío de alertas en tiempo real |
-| **GitHub Actions** | Automatización diaria del pipeline |
+| **Python** | Processing, analysis, and automation|
+| **Pandas** | Data cleaning and manipulation |
+| **Google Drive API** | Download CSV files|
+| **Google Sheets API (GSpread)** | Updating and reading spreadsheets |
+| **Telegram Bot API** | Sending real-time alerts |
+| **GitHub Actions** | Daily pipeline automation |
 
 ---
 
-## 🚀 Pipeline Automatizado
+## 🚀 Automated Pipeline
 
-El flujo completo se ejecuta automáticamente mediante **GitHub Actions**, que orquesta ambos agentes en secuencia:
+The entire flow is executed automatically using **GitHub Actions**, which orchestrates both agents sequentially:
 
-1. **Agente 1** → sincroniza datos desde Google Drive a Google Sheets.  
-2. **Agente 2** → analiza la ocupación y envía alertas.  
+1. **Agent 1** → Sync data from Google Drive to Google Sheets.
+2. **Agent 2** → It analyzes occupancy and sends alerts.
 
-Cada ejecución queda registrada en los logs de GitHub Actions y en la hoja `alertas_log`.
+Each execution is logged in the GitHub Actions logs and in the `alertas_log` file.
 
 ---
 
-## 🗂️ Estructura del Repositorio
+## 🗂️ Repository Structure
 
 ```bash
 
 📁 Proyecto-Predicci-n-hospitalaria/
-├── data/                                                              # Datos limpios y listos para análisis
+├── data/                                                              # Clean data, ready for analysis
 │     ├── hospital_data.csv                                            # Dataset Data Engineer 
 │     └── predicciones.csv                                             # Dataset ML Forecasting 
 │ 
-├── Agentes_Automatizacion/
-│   ├── Agente1_data.py                                                # Agente que sincroniza datos desde Google Drive a Google Sheets
-│   └── Agente2_alertas.py                                             # Agente que analiza la ocupación y envía alertas
+├── Automation Agents/
+│   ├── Agent1_data.py                                                 # Agent that synchronizes data from Google Drive to Google Sheets
+│   └── Agent2_alerts.py                                               # Agent that analyzes occupancy and sends alerts
 │
 ├── .github/                                          
 │   └──workflows/                                                       
-│       ├── Agente 1.yaml                                               # Workflow para ejecutar el Agente 1: integración de datos desde Google Drive a Google Sheets
-│       └── Agente 2.yaml                                               # Workflow para el Agente 2: procesamiento de datos hospitalarios y envío de alertas de predicción
+│       ├── Agent 1.yaml                                               # Workflow to run Agent 1: data integration from Google Drive to Google Sheets
+│       └── Agent 2.yaml                                               # Workflow for Agent 2: processing hospital data and sending prediction alerts
 │
-├── imagen/                                                             # Visualizaciones y gráficos de los Agentes
+├── image/                                                             # Agent visualizations and charts
 │
-├── README.md                                                           # Descripción general del proyecto
-└── requirements.txt                                                    # Librerías necesarias para ejecutar el proyecto
+├── README.md                                                          # Project Overview
+└── requirements.txt                                                   # Libraries required to run the project
 ```
 
 ## Author
