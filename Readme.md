@@ -4,7 +4,7 @@ This project implements an **automated pipeline** based on **GitHub Actions** an
 
 The system combines data integration, occupancy analysis, and automatic alerts sent via Telegram.
 
-The CSV files of historical data and forecasting predictions are a product of this project [Predictive Model of Resources in Hospitalized in Spain](https://github.com/BarbaraAngelesOrtiz/Proyecto-Predicci-n-hospitalaria)
+The CSV files of historical data and forecasting predictions are a product of this project [Predictive model of resources for hospitalized people in Spain](https://github.com/BarbaraAngelesOrtiz/Proyecto-Predicci-n-hospitalaria)
 
 ---
 
