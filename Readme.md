@@ -48,7 +48,7 @@ The agent also:
 - 📲 **Sends automatic alerts via Telegram** when:
   - **Actual occupancy ≥ 85%**
   - **Projected occupancy ≥ 95%**
-- 🗂️ **Record each event** in the `alerts_log` sheet with:
+- 🗂️ **Record each event** in the `alertas_log` sheet with:
 - Timestamp
 - Alert Type
 - Hospital
