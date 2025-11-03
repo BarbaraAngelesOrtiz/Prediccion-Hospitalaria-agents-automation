@@ -120,6 +120,8 @@ Each execution is logged in the GitHub Actions logs and in the `alertas_log` fil
 └── requirements.txt                                                   # Libraries required to run the project
 ```
 
+---
+
 ## Author
 **Bárbara de los Ángeles Ortiz**
 
